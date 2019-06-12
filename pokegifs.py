@@ -10,4 +10,9 @@ print(body["id"])
 
 key = os.environ.get("GIPHY_KEY")
 url = "https://api.giphy.com/v1/gifs/search?api_key={}&q=pikachu&rating=g".format(key)
-requests.get(url)
+gif_res = requests.get(url)
+gif_body = json.loads(gif_res.content)
+
+
+for key in gif_body['data'][0].keys():
+    print(key)
